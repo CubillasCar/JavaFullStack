@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,7 @@ public class PacienteController {
 	
 	//definimos los primeros metodos
 	//nivel de madures 0
-	
+
 	//listar todos
 	@GetMapping
 	public List<Paciente> listar (){
@@ -38,19 +39,21 @@ public class PacienteController {
 	}
 	
 	//insertar
+	//RequestBody tranforma los json a objetos
 	@PostMapping
-	public Paciente registrar(Paciente paciente) {
+	public Paciente registrar(@RequestBody Paciente paciente) {
 		return service.registrar(paciente);
 	}
 	
 	//Modificar
+	//RequestBody tranforma los json a objetos
 	@PutMapping
-	public Paciente modificar(Paciente paciente) {
-		return service.registrar(paciente);
+	public Paciente modificar(@RequestBody Paciente paciente) {
+		return service.modificar(paciente);
 	}
 	
 	//Delete
-	@DeleteMapping
+	@DeleteMapping ("/{id}")
 	public void eliminar(@PathVariable("id")Integer id) {
 		 service.eliminar(id);
 	}
