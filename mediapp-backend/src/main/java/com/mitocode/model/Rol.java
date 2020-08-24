@@ -18,28 +18,30 @@ public class Rol {
 	@Column(name = "descripcion")
 	private String descriptcion;
 
-	Integer getIdRol() {
+	public Integer getIdRol() {
 		return idRol;
 	}
 
-	void setIdRol(Integer idRol) {
+	public void setIdRol(Integer idRol) {
 		this.idRol = idRol;
 	}
 
-	String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 
-	void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	String getDescriptcion() {
+	public String getDescriptcion() {
 		return descriptcion;
 	}
 
-	void setDescriptcion(String descriptcion) {
+	public void setDescriptcion(String descriptcion) {
 		this.descriptcion = descriptcion;
 	}
+
+	
 
 }

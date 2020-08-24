@@ -22,29 +22,37 @@ public class Examen {
 	@Column(name="descripcion", nullable=false, length=50)
 	private String descripcion;
 
-	Integer getIdExamen() {
+
+	public Integer getIdExamen() {
 		return idExamen;
 	}
 
-	void setIdExamen(Integer idExamen) {
+
+	public void setIdExamen(Integer idExamen) {
 		this.idExamen = idExamen;
 	}
 
-	String getNombre() {
+
+	public String getNombre() {
 		return nombre;
 	}
 
-	void setNombre(String nombre) {
+
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	String getDescripcion() {
+
+	public String getDescripcion() {
 		return descripcion;
 	}
 
-	void setDescripcion(String descripcion) {
+
+	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	
 
 	
 }

@@ -22,29 +22,31 @@ public class Especialidad {
 	@Column(name = "descripcion", nullable = false, length = 50)
 	private String descripcion;
 
-	Integer getIdEspecialidad() {
+	public Integer getIdEspecialidad() {
 		return idEspecialidad;
 	}
 
-	void setIdEspecialidad(Integer idEspecialidad) {
+	public void setIdEspecialidad(Integer idEspecialidad) {
 		this.idEspecialidad = idEspecialidad;
 	}
 
-	String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 
-	void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	String getDescripcion() {
+	public String getDescripcion() {
 		return descripcion;
 	}
 
-	void setDescripcion(String descripcion) {
+	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	
 	
 
 }

@@ -28,44 +28,46 @@ public class Medico {
 	@Column(name = "fotourl", nullable = true)
 	private String fotoUrl;
 
-	Integer getIdMedico() {
+	public Integer getIdMedico() {
 		return idMedico;
 	}
 
-	void setIdMedico(Integer idMedico) {
+	public void setIdMedico(Integer idMedico) {
 		this.idMedico = idMedico;
 	}
 
-	String getNombres() {
+	public String getNombres() {
 		return nombres;
 	}
 
-	void setNombres(String nombres) {
+	public void setNombres(String nombres) {
 		this.nombres = nombres;
 	}
 
-	String getApellidos() {
+	public String getApellidos() {
 		return apellidos;
 	}
 
-	void setApellidos(String apellidos) {
+	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 
-	String getCMP() {
+	public String getCMP() {
 		return CMP;
 	}
 
-	void setCMP(String cMP) {
+	public void setCMP(String cMP) {
 		CMP = cMP;
 	}
 
-	String getFotoUrl() {
+	public String getFotoUrl() {
 		return fotoUrl;
 	}
 
-	void setFotoUrl(String fotoUrl) {
+	public void setFotoUrl(String fotoUrl) {
 		this.fotoUrl = fotoUrl;
 	}
+
+
 
 }
