@@ -35,7 +35,7 @@ public class Consulta {
 	@JoinColumn(name="id_especialidad", nullable=false, foreignKey=@ForeignKey(name="fk_consulta_especialidad"))
 	private Especialidad especialidad;
 	
-	@ManyToOne
+	
 	@Column(name = "num_consultorio", length = 3, nullable = true)
 	private String numConsultorio;
 
