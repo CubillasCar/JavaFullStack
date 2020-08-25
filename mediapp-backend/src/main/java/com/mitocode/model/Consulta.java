@@ -1,7 +1,9 @@
 package com.mitocode.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -41,4 +44,10 @@ public class Consulta {
 
 	@Column(name="fecha", nullable=false)
 	private LocalDateTime fecha;
+	
+	//a nivel logico
+	//lo que le pase a la tabla padre tambien le afecta a la talba detalle.
+	//orphan sirve para eliminar algun elemento del detalle
+	@OneToMany(mappedBy="consulta",cascade= {CascadeType.ALL}, orphanRemoval=true)
+	private List<DetalleConsulta> detalleConsulta;
 }
