@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 @Entity
 @Table(name = "rol")
 public class Rol {
@@ -14,9 +13,9 @@ public class Rol {
 
 	@Column(name = "nombre")
 	private String nombre;
-	
+
 	@Column(name = "descripcion")
-	private String descriptcion;
+	private String descripcion;
 
 	public Integer getIdRol() {
 		return idRol;
@@ -34,14 +33,12 @@ public class Rol {
 		this.nombre = nombre;
 	}
 
-	public String getDescriptcion() {
-		return descriptcion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setDescriptcion(String descriptcion) {
-		this.descriptcion = descriptcion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
-
-	
 
 }

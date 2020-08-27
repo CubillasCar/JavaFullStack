@@ -18,6 +18,7 @@ import javax.persistence.Table;
  *          importar de forma automatica= ctrl + shift + O
  */
 
+
 @Entity
 @Table(name = "paciente")
 public class Paciente {
@@ -44,6 +45,7 @@ public class Paciente {
 	@Column(name = "email", nullable = false, length = 70)
 	private String email;
 
+	
 	public Integer getIdPaciente() {
 		return idPaciente;
 	}

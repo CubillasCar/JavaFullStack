@@ -16,9 +16,9 @@ import com.mitocode.service.IPacienteService;
 @Service
 public class PacienteServiceImpl implements IPacienteService{
 
-	@Autowired //se crea instancia 
+	//se crea instancia 
+	@Autowired
 	private IPacienteRepo repo;
-	
 	
 	@Override
 	public Paciente registrar(Paciente pac) {
@@ -34,11 +34,10 @@ public class PacienteServiceImpl implements IPacienteService{
 	public List<Paciente> listar() {
 		return repo.findAll();
 	}
-		
 
 	@Override
-	public Paciente listarPorId(Integer id) {
-		Optional <Paciente> op= repo.findById(id);
+	public Paciente listarPorId(Integer id) {		
+		Optional<Paciente> op = repo.findById(id);
 		return op.isPresent() ? op.get() : new Paciente();
 	}
 
@@ -46,5 +45,6 @@ public class PacienteServiceImpl implements IPacienteService{
 	public void eliminar(Integer id) {
 		repo.deleteById(id);
 	}
+
 
 }
