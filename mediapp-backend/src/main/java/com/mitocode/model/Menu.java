@@ -1,8 +1,13 @@
 package com.mitocode.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +26,16 @@ public class Menu {
 	@Column(name = "url", length = 50)
 	private String url;
 
+	//Segunda Forma practica para tablas intermedias
+	//private List
+	//private Set: para evitar valores repetidos
+	//JoinTable para crear relacion con una tabla intermedia
+	@ManyToMany
+	@JoinTable(name="menu_rol",
+				joinColumns=@JoinColumn(name="id_menu", referencedColumnName="idMenu"),
+				inverseJoinColumns=@JoinColumn(name="id_rol",referencedColumnName="id_rol"))	
+	private List<Rol> roles;
+	
 	public Integer getIdMenu() {
 		return idMenu;
 	}
