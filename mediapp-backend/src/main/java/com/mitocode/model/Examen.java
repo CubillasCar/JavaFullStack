@@ -52,6 +52,35 @@ public class Examen {
 		this.descripcion = descripcion;
 	}
 
+	//alt + shift + s para generar equals idExamen
+	//se hace esto para que sean usadas en la tabla ConsultaexamenPK
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idExamen == null) ? 0 : idExamen.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Examen other = (Examen) obj;
+		if (idExamen == null) {
+			if (other.idExamen != null)
+				return false;
+		} else if (!idExamen.equals(other.idExamen))
+			return false;
+		return true;
+	}
+
 	
 
 	

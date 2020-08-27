@@ -25,5 +25,6 @@ public class DetalleConsulta {
 	@Column(name="diagnostico", nullable=false)
 	private String diagnostico;
 	
+	@Column(name="tratamiento", nullable=false)
 	private String tratamiento;
 }
