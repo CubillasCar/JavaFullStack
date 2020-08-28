@@ -39,7 +39,7 @@ public class Menu {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="menu_rol",
 				joinColumns=@JoinColumn(name="id_menu", referencedColumnName="idMenu"),
-				inverseJoinColumns=@JoinColumn(name="id_rol",referencedColumnName="id_rol"))	
+				inverseJoinColumns=@JoinColumn(name="id_rol",referencedColumnName="idRol"))	
 	private List<Rol> roles;
 	
 	

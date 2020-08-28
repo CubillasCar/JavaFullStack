@@ -1,11 +1,14 @@
 package com.mitocode.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 //aca se crea la relacion para las llaves foraneas
-
-public class ConsultaExamenPK {
+@Embeddable
+public class ConsultaExamenPK implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="id_consulta", nullable=false)

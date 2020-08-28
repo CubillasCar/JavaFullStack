@@ -22,8 +22,6 @@ public class Consulta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idConsulta;
-
-	
 	//Clase que representa llave foranea
 	//toda FK es ManyToOne
 	@ManyToOne
@@ -50,7 +48,7 @@ public class Consulta {
 	//----------------------------------------------------------------------------
 	//Detalle Consulta
 	//OneToMany a nivel logico
-	//lo que le pase a la tabla padre tambien le afecta a la talba detalle.
+	//lo que le pase a la tabla padre tambien le afecta a la tabla detalle.
 	//orphan sirve para eliminar algun elemento del detalle
 	@OneToMany(mappedBy="consulta",cascade= {CascadeType.ALL}, orphanRemoval=true)
 	private List<DetalleConsulta> detalleConsulta;
