@@ -10,6 +10,11 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class ConsultaExamenPK implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@ManyToOne
 	@JoinColumn(name="id_consulta", nullable=false)
 	private Consulta consulta;
