@@ -7,9 +7,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 //aca se crea la relacion para las llaves foraneas
+
 @Embeddable
 public class ConsultaExamenPK implements Serializable {
-	
+
+
 	/**
 	 * 
 	 */

@@ -24,6 +24,7 @@ public class Consulta {
 	private Integer idConsulta;
 	//Clase que representa llave foranea
 	//toda FK es ManyToOne
+	
 	@ManyToOne
 	@JoinColumn(name="id_paciente", nullable=false, foreignKey= @ForeignKey(name="FK_consulta_paciente	"))//Fk_Consulta_Paciente
 	private Paciente paciente;
@@ -47,16 +48,14 @@ public class Consulta {
 	
 	//----------------------------------------------------------------------------
 	//Detalle Consulta
-	//OneToMany a nivel logico
+	//OneToMany a nivel logico. Se usa en temas de maestro detalle.
 	//lo que le pase a la tabla padre tambien le afecta a la tabla detalle.
 	//orphan sirve para eliminar algun elemento del detalle
+	
 	@OneToMany(mappedBy="consulta",cascade= {CascadeType.ALL}, orphanRemoval=true)
 	private List<DetalleConsulta> detalleConsulta;
 
-	
-	
-	//alt + shift + s para equals de idConsulta
-	//se hace esto para que sean usadas en la tabla ConsultaexamenPK
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -64,6 +63,7 @@ public class Consulta {
 		result = prime * result + ((idConsulta == null) ? 0 : idConsulta.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -81,6 +81,12 @@ public class Consulta {
 			return false;
 		return true;
 	}
+
+	
+	
+	//alt + shift + s para equals de idConsulta
+	//se hace esto para que sean usadas en la tabla ConsultaexamenPK
+	
 
 	
 }

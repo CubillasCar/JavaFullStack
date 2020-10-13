@@ -13,10 +13,11 @@ import com.mitocode.service.IPacienteService;
 //ctrl + 1 para sobre escribir los metodos
 //Definimos la logica que se encuentra en Repo
 //Siempre el @Service debe estar en la clase, no en la implementacion
+
 @Service
 public class PacienteServiceImpl implements IPacienteService{
 
-	//se crea instancia 
+
 	@Autowired
 	private IPacienteRepo repo;
 	
@@ -31,20 +32,20 @@ public class PacienteServiceImpl implements IPacienteService{
 	}
 
 	@Override
-	public List<Paciente> listar() {
-		return repo.findAll();
+	public void eliminar(Integer id) {
+		repo.deleteById(id);
 	}
-
+	
 	@Override
 	public Paciente listarPorId(Integer id) {		
 		Optional<Paciente> op = repo.findById(id);
 		return op.isPresent() ? op.get() : new Paciente();
 	}
 
+	
 	@Override
-	public void eliminar(Integer id) {
-		repo.deleteById(id);
+	public List<Paciente> listar() {
+		return repo.findAll();
 	}
-
 
 }

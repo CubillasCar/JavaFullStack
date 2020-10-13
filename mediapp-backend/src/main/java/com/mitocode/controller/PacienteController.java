@@ -2,6 +2,8 @@ package com.mitocode.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import com.mitocode.model.Paciente;
 import com.mitocode.service.IPacienteService;
 
 //Se genera el service
+//@Valid se coloca donde se quiera que se respeten los javax validation constraints
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
@@ -41,14 +44,14 @@ public class PacienteController {
 	//insertar
 	//RequestBody tranforma los json a objetos
 	@PostMapping
-	public Paciente registrar(@RequestBody Paciente paciente) {
+	public Paciente registrar(@Valid @RequestBody Paciente paciente) {
 		return service.registrar(paciente);
 	}
 	
 	//Modificar
 	//RequestBody tranforma los json a objetos
 	@PutMapping
-	public Paciente modificar(@RequestBody Paciente paciente) {
+	public Paciente modificar(@Valid @RequestBody Paciente paciente) {
 		return service.modificar(paciente);
 	}
 	
