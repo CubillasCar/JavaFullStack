@@ -1,5 +1,6 @@
 package com.mitocode.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,15 +14,15 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name="menu_rol")
-@IdClass(MenuRolPK.class)
-public class MenuRol {
-	
-	@Id
-	private Menu menu;
-	
-	@Id
-	private Rol rol;
+@Table(name="usuario_rol")
+@IdClass(UsuarioRolPK.class)
+public class UsuarioRol {
 
-	
+    @Id
+    private Usuario usuario;
+
+    @Id
+    private Rol rol;
+
+
 }

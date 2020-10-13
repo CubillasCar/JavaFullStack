@@ -1,5 +1,8 @@
 package com.mitocode.model;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
@@ -8,14 +11,12 @@ import javax.persistence.ManyToOne;
 
 //aca se crea la relacion para las llaves foraneas
 
+@Data
+@EqualsAndHashCode
 @Embeddable
 public class ConsultaExamenPK implements Serializable {
 
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
 	@JoinColumn(name="id_consulta", nullable=false)
@@ -25,39 +26,5 @@ public class ConsultaExamenPK implements Serializable {
 	@JoinColumn(name="id_examen", nullable=false)
 	private Examen examen;
 
-	
-	
-	//alt + shift + s para generar los respectivos equals de las llaves
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((consulta == null) ? 0 : consulta.hashCode());
-		result = prime * result + ((examen == null) ? 0 : examen.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ConsultaExamenPK other = (ConsultaExamenPK) obj;
-		if (consulta == null) {
-			if (other.consulta != null)
-				return false;
-		} else if (!consulta.equals(other.consulta))
-			return false;
-		if (examen == null) {
-			if (other.examen != null)
-				return false;
-		} else if (!examen.equals(other.examen))
-			return false;
-		return true;
-	}
-	
-	
 }
