@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,34 +33,39 @@ public class PacienteController {
 
 	//listar todos
 	@GetMapping
-	public List<Paciente> listar (){
-		return service.listar();
+	public ResponseEntity< List<Paciente>> listar (){
+		List<Paciente> lista= service.listar();
+			return new ResponseEntity<List<Paciente>>(lista, HttpStatus.OK)	;
 	}
 	
 	//listar por id
 	@GetMapping ("/{id}")	//el valor ingresa	
-	public Paciente listarPorId(@PathVariable("id")Integer id) {
-		return service.listarPorId(id);
+	public ResponseEntity< Paciente> listarPorId(@PathVariable("id")Integer id) {
+		Paciente obj= service.listarPorId(id);
+		return new ResponseEntity<Paciente>(obj, HttpStatus.OK);
 	}
 	
 	//insertar
 	//RequestBody tranforma los json a objetos
 	@PostMapping
-	public Paciente registrar(@Valid @RequestBody Paciente paciente) {
-		return service.registrar(paciente);
+	public ResponseEntity< Paciente> registrar(@Valid @RequestBody Paciente paciente) {
+		Paciente obj= service.registrar(paciente);
+		return new ResponseEntity<Paciente>(obj, HttpStatus.CREATED);
 	}
 	
 	//Modificar
 	//RequestBody tranforma los json a objetos
 	@PutMapping
-	public Paciente modificar(@Valid @RequestBody Paciente paciente) {
-		return service.modificar(paciente);
+	public ResponseEntity< Paciente> modificar(@Valid @RequestBody Paciente paciente) {
+		Paciente obj= service.modificar(paciente);
+		return new ResponseEntity<Paciente>(obj, HttpStatus.OK);
 	}
 	
 	//Delete
 	@DeleteMapping ("/{id}")
-	public void eliminar(@PathVariable("id")Integer id) {
+	public ResponseEntity<Void> eliminar(@PathVariable("id")Integer id) {
 		 service.eliminar(id);
+		 return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
 }
