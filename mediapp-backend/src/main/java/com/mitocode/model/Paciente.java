@@ -49,7 +49,7 @@ public class Paciente {
 	@Column(name = "direccion", nullable = false, length = 70)
 	private String direccion;
 
-	@Size(min=9, max=9, message="Telefono debe tener 9 caracteres")
+	@Size(min=7, max=9, message="Telefono debe tener 9 caracteres")
 	@Column(name = "telefono", nullable = false, length = 9)
 	private String telefono;
 
@@ -57,7 +57,7 @@ public class Paciente {
 	@Column(name = "email", nullable = false, length = 70)
 	private String email;
 
-	
+
 	public Integer getIdPaciente() {
 		return idPaciente;
 	}

@@ -22,10 +22,6 @@ public class DetalleConsulta {
 	@JoinColumn(name="id_consulta", nullable=false, foreignKey=@ForeignKey(name="FK_consulta_detalle"))
 	private Consulta consulta;
 	
-	
-	
-	
-	
 	@Column(name="diagnostico", nullable=false)
 	private String diagnostico;
 	
