@@ -10,17 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.swing.text.html.parser.Entity;
 import java.time.LocalDateTime;
+import java.util.stream.Collectors;
 
 @RestController
 @ControllerAdvice
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
-    String mensaje = "";
-
 
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ExceptionResponse> manejarTodasExcepciones(ModeloNotFoundException ex, WebRequest request){
+    public final ResponseEntity<ExceptionResponse> manejarTodasExcepciones(Exception ex, WebRequest request){
+
         ExceptionResponse er= new ExceptionResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<ExceptionResponse>(er, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -31,14 +30,16 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<ExceptionResponse>(er, HttpStatus.NOT_FOUND);
     }
 
-    //ctrl + o
+
 
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+                                                                  HttpHeaders headers, HttpStatus status, WebRequest request) {
 
-        ex.getBindingResult().getAllErrors().forEach(e -> {
-            mensaje += e.getDefaultMessage().toString() + " \n";
-        });
+        String mensaje = ex.getBindingResult().getAllErrors().stream().map(e -> {
+            return  e.getDefaultMessage().toString().concat(" - ");
+        }).collect(Collectors.joining());
+
         ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(),mensaje, request.getDescription(false));
         return new ResponseEntity<Object>(er, HttpStatus.BAD_REQUEST);
     }

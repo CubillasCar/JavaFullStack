@@ -1,5 +1,10 @@
 package com.mitocode.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,25 +12,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
+@Schema(description = "Informacion del Medico")
 @Entity
 @Table(name = "medico")
 public class Medico {
 
+	@Schema(description = "Id Identity")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idMedico;
 
+	@Schema(description = "Nombre del Medico")
 	@Column(name = "nombres", nullable = false, length = 70)
 	private String nombres;
 
+	@Schema(description = "Apellido del Medico")
 	@Column(name = "apellidos", nullable = false, length = 70)
 	private String apellidos;
 
+	@Schema(description = "CMP del Medico")
 	@Column(name = "CMP", nullable = false, length = 12)
 	private String CMP;
 
-	@Column(name = "fotourl", nullable = true)
+	@Schema(description = "Foto del Medico")
+	@Column(name = "foto_url", nullable = true)
 	private String fotoUrl;
 
 	public Integer getIdMedico() {
@@ -56,8 +66,8 @@ public class Medico {
 		return CMP;
 	}
 
-	public void setCMP(String cMP) {
-		CMP = cMP;
+	public void setCMP(String CMP) {
+		this.CMP = CMP;
 	}
 
 	public String getFotoUrl() {
@@ -67,7 +77,4 @@ public class Medico {
 	public void setFotoUrl(String fotoUrl) {
 		this.fotoUrl = fotoUrl;
 	}
-
-
-
 }

@@ -66,6 +66,12 @@
 			<version>1.1.49</version>
 		</dependency>
 
+	<!-- Hateoas - Nivel 3 Richardson		-->
+		<dependency>
+			<groupId>org.springframework.hateoas</groupId>
+			<artifactId>spring-hateoas</artifactId>
+		</dependency>
+
 	<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>

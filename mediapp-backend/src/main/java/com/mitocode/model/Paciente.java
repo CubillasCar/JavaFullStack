@@ -1,5 +1,7 @@
 package com.mitocode.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,56 +9,49 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- * SQL @Entity / NOSQL @Collection vuelve a la clase una entidad
- * 
- * @Table: crea una tabla. Si no se pone nombre a la tabla toma como nombre por
- *         defecto al nombre de la clase en minisculas
- * @Id: asigna llave primaria
- * @GenerateValue: asigna llave autoincremental
- * @Column: agrega Integer: Acepta valores nulos Int: No acepta valores nulos
- *          importar de forma automatica= ctrl + shift + O
- * @Size: apartir 2.3 la lib no esta disponible: springboot starte validation
- * @Pattern: para expresiones regulares
- * @Bundles: para i18n
- */
-
-
+@Schema(description = "Informacion del paciente")
 @Entity
 @Table(name = "paciente")
 public class Paciente {
 
+	@Schema(description = "Id Identity")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idPaciente;
-	
-	
+
+	@Schema(description = "Nomnbres del paciente")
 	@Size(min=3, message="Nombres debe tener minimo 3 caracteres")
 	@Column(name = "nombres", nullable = false, length = 70)
 	private String nombres;
-	
+
+	@Schema(description = "Apellidos del paciente")
+	@NotNull
 	@Size(min=3, message="Apellidos debe tener minimo 3 caracteres")
 	@Column(name = "apellidos", nullable = false, length = 70)
 	private String apellidos;
 
+	@Schema(description = "Dni del paciente")
 	@Size(min=8, max=8, message="DNI debe tener 8 caracteres")
 	@Column(name = "dni", nullable = false, length = 8)
 	private String dni;
 
+	@Schema(description = "Direccion del paciente")
 	@Size(min=3, max=150, message="Direccion debe tener minimo 3 caracteres")
 	@Column(name = "direccion", nullable = false, length = 70)
 	private String direccion;
 
+	@Schema(description = "Telefono del paciente")
 	@Size(min=7, max=9, message="Telefono debe tener 9 caracteres")
 	@Column(name = "telefono", nullable = false, length = 9)
 	private String telefono;
 
+	@Schema(description = "Email del paciente")
 	@Email
 	@Column(name = "email", nullable = false, length = 70)
 	private String email;
-
 
 	public Integer getIdPaciente() {
 		return idPaciente;
@@ -113,5 +108,4 @@ public class Paciente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 }
