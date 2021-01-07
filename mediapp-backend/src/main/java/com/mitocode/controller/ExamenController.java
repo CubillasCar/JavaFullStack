@@ -1,8 +1,11 @@
 package com.mitocode.controller;
 
+
 import com.mitocode.exepcion.ModeloNotFoundException;
-import com.mitocode.model.Medico;
-import com.mitocode.service.IMedicoService;
+import com.mitocode.model.Especialidad;
+import com.mitocode.model.Examen;
+import com.mitocode.service.IEspecialidadService;
+import com.mitocode.service.IExamenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
@@ -20,70 +23,70 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 
 @RestController
-@RequestMapping("/medicos")
-public class MedicoController {
+@RequestMapping("/examenes")
+public class ExamenController {
 
 	@Autowired
-	private IMedicoService service;
+	private IExamenService service;
 
 	//Listar
 	@GetMapping
-	public ResponseEntity< List<Medico>> listar() throws Exception{
-		List<Medico>  lista=service.listar();
-		return new ResponseEntity<List<Medico>>(lista, HttpStatus.OK);
+	public ResponseEntity< List<Examen>> listar() throws Exception{
+		List<Examen>  lista=service.listar();
+		return new ResponseEntity<List<Examen>>(lista, HttpStatus.OK);
 	}
 
 	//Listar por Id
 //HATEOAS NIVEL 3 RICHARDSON
 	@GetMapping("/hateoas/{id}")
-	public EntityModel<Medico> listarPorIdHateoas(@PathVariable("id") Integer id) throws Exception{
-		Medico obj= service.listarPorId(id);
+	public EntityModel<Examen> listarPorIdHateoas(@PathVariable("id") Integer id) throws Exception{
+		Examen obj= service.listarPorId(id);
 		if (obj==null){
 			throw new ModeloNotFoundException("ID NO ENCONTRADO: "+id);
 
 		}
-		//localhost:8080/Medicoss/{id}
-		EntityModel<Medico> recurso= EntityModel.of(obj);
+		//localhost:8080/pacientes/{id}
+		EntityModel<Examen> recurso= EntityModel.of(obj);
 		WebMvcLinkBuilder linkTo= linkTo(methodOn(this.getClass()).listarPorId(id));
 
-		recurso.add(linkTo.withRel("medico-recurso"));
+		recurso.add(linkTo.withRel("examen-recurso"));
 		return recurso;
 
 
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity <Medico> listarPorId(@PathVariable("id") Integer id) throws Exception{
-		Medico obj = service.listarPorId(id);
+	public ResponseEntity <Examen> listarPorId(@PathVariable("id") Integer id) throws Exception{
+		Examen obj = service.listarPorId(id);
 		if (obj ==null){
 				throw new ModeloNotFoundException("ID NO ENCONTRADO: "+id);
 
 		}
-		return new ResponseEntity<Medico>(obj, HttpStatus.OK);
+		return new ResponseEntity<Examen>(obj, HttpStatus.OK);
 	}
 
 
 
 	@PostMapping
-	public ResponseEntity<Void> registrar(@Valid @RequestBody Medico medico) throws Exception{
-		Medico obj= service.registrar(medico);
+	public ResponseEntity<Void> registrar(@Valid @RequestBody Examen examen) throws Exception{
+		Examen obj= service.registrar(examen);
 
-		//localhost:8080/Medicoss/7
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdMedico()).toUri();
+		//localhost:8080/pacientes/7
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdExamen()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 
 	//Modificar
 	@PutMapping
-	public ResponseEntity<Medico> modificar(@Valid @RequestBody Medico medico) throws Exception{
-		Medico obj= service.modificar(medico);
-		return new ResponseEntity<Medico>(obj, HttpStatus.OK);
+	public ResponseEntity<Examen> modificar(@Valid @RequestBody Examen examen) throws Exception{
+		Examen obj= service.modificar(examen);
+		return new ResponseEntity<Examen>(obj, HttpStatus.OK);
 
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> eliminar(@PathVariable("id") Integer id) throws Exception{
-		Medico obj = service.listarPorId(id);
+		Examen obj = service.listarPorId(id);
 		if (obj==null){
 			throw new ModeloNotFoundException("ID NO ENCONTRADO: "+id);
 

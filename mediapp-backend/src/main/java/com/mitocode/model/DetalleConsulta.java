@@ -1,5 +1,8 @@
 package com.mitocode.model;
 
+
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -17,7 +20,8 @@ public class DetalleConsulta {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer IdDetalle;
-	
+
+
 	@ManyToOne
 	@JoinColumn(name="id_consulta", nullable=false, foreignKey=@ForeignKey(name="FK_consulta_detalle"))
 	private Consulta consulta;

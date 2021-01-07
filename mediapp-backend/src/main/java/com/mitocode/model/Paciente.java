@@ -12,6 +12,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
 @Schema(description = "Informacion del paciente")
 @Entity
 @Table(name = "paciente")
@@ -52,6 +53,8 @@ public class Paciente {
 	@Email
 	@Column(name = "email", nullable = false, length = 70)
 	private String email;
+
+	
 
 	public Integer getIdPaciente() {
 		return idPaciente;

@@ -9,16 +9,15 @@ import javax.validation.Valid;
 import com.mitocode.exepcion.ModeloNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.mitocode.model.Paciente;
 import com.mitocode.service.IPacienteService;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
